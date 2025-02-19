@@ -1,0 +1,41 @@
+Script started on 2025-02-19 05:12:31+00:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="160" LINES="9"]
+[0;32m@LoganOslund [0m➜ [1;34m/workspaces/csci-330-homeworks-LoganOslund/Hwork3 [0;36m([1;31mmain[0;36m) [0m$ cat Q4Code.lisp 
+(defun insert-item (item sorted-list)
+  (cond
+   ((endp sorted-list) (list item))  ; If the sorted list is empty, return the item in a new list
+   ((< item (car sorted-list)) (cons item sorted-list))  ; Insert item before the first element if smaller
+   (t (cons (car sorted-list) (insert-item item (cdr sorted-list)))) ; Otherwise, insert recursively
+  )
+)  
+
+(defun insertion-sort (unsorted-list)
+  (if (endp unsorted-list)  ; If the unsorted list is empty, stop
+      '()  ; An empty list is already sorted
+      (let ((first-item (car unsorted-list))
+            (rest-of-list (cdr unsorted-list)))
+        (insert-item first-item (insertion-sort rest-of-list)) ; Insert the first item into the sorted list
+      )
+  )
+)  
+
+
+(let ((arr '(5 2 9 1 5 6 3 11 0)))
+(format t "Original list: ~A~%" arr)
+(format t "Sorted list: ~A~%" (insertion-sort arr))
+)
+[0;32m@LoganOslund [0m➜ [1;34m/workspaces/csci-330-homeworks-LoganOslund/Hwork3 [0;36m([1;31mmain[0;36m) [0m$ cat Q4Code.lisp exit[Ksbcl --script Q3Code.lisp[1PCode.lisp4Code.lisp[C[C[C[C[C[C[C[C[C
+Original list: (5 2 9 1 5 6 3 11 0)
+Sorted list: (0 1 2 3 5 5 6 9 11)
+[0;32m@LoganOslund [0m➜ [1;34m/workspaces/csci-330-homeworks-LoganOslund/Hwork3 [0;36m([1;31mmain[0;36m) [0m$ sbcl --script Q4Code.lisp
+Original list: (1 2 70 1 2 6 3 11)
+Sorted list: (1 1 2 2 3 6 11 70)
+[0;32m@LoganOslund [0m➜ [1;34m/workspaces/csci-330-homeworks-LoganOslund/Hwork3 [0;36m([1;31mmain[0;36m) [0m$ sbcl --script Q4Code.lisp
+Original list: (1)
+Sorted list: (1)
+[0;32m@LoganOslund [0m➜ [1;34m/workspaces/csci-330-homeworks-LoganOslund/Hwork3 [0;36m([1;31mmain[0;36m) [0m$ sbcl --script Q4Code.lisp
+Original list: NIL
+Sorted list: NIL
+[0;32m@LoganOslund [0m➜ [1;34m/workspaces/csci-330-homeworks-LoganOslund/Hwork3 [0;36m([1;31mmain[0;36m) [0m$ exit
+exit
+
+Script done on 2025-02-19 05:13:40+00:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,51 @@
+Script started on 2025-02-19 04:50:06+00:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="160" LINES="9"]
+[0;32m@LoganOslund [0m➜ [1;34m/workspaces/csci-330-homeworks-LoganOslund/Hwork3 [0;36m([1;31mmain[0;36m) [0m$ cat Q3Code.lisp 
+(defun sort-pair (a b)
+  (if (< a b)
+      (list a b)
+      (list b a)
+  )
+)
+
+(defun partition-pairs (L)
+  (cond
+    ((endp L) nil) ; Return nil if the list is empty
+    ((endp (cdr L)) (list (list (car L)))) ; If only one element, return it as a pair with itself
+    (t (cons (sort-pair (car L) (cadr L)) ; Sort the first two elements into a pair
+             (partition-pairs (cddr L)))) ; Recursively process the rest of the list
+  )
+) 
+
+(defun merge-sorted-lists (L1 L2)
+  (cond
+   ((endp L1) L2)  ; If L1 is empty, return L2
+   ((endp L2) L1)  ; If L2 is empty, return L1
+   ((< (car L1) (car L2)) (cons (car L1) (merge-sorted-lists (cdr L1) L2)))  ; Merge the first element of L1
+   (t (cons (car L2) (merge-sorted-lists L1 (cdr L2))))))  ; Merge the first element of L2
+
+(defun merge-pairs (L)
+  (cond
+    ((endp L) nil)  ; If the list is empty, return nil
+    ((endp (cdr L)) (car L))  ; If there's only one pair left, return it
+    (t (let ((first (car L))
+             (second (cadr L)))
+         (merge-pairs (cons (merge-sorted-lists first second) (cddr L))))) ; Recursively merge adjacent pairs
+  )
+) 
+
+(defun bottom-up (L)
+  (let ((sorted-pairs (partition-pairs L))) ; Partition the list into sorted pairs
+    (merge-pairs sorted-pairs)) ; Merge the sorted pairs
+)  
+
+(let ((arr '(3 1 4 2 5 0 7 3 9 1)))
+  (format t "Original list: ~A~%" arr)
+  (format t "Sorted list: ~A~%" (bottom-up arr))
+)
+[0;32m@LoganOslund [0m➜ [1;34m/workspaces/csci-330-homeworks-LoganOslund/Hwork3 [0;36m([1;31mmain[0;36m) [0m$ cat Q3Code.lisp exit[Ksbcl --script Q2Code.lisp[1PCode.lisp3Code.lisp[C[C[C[C[C[C[C[C[C
+Original list: (3 1 4 2 5 0 7 3 9 1)
+Sorted list: (0 1 1 2 3 3 4 5 7 9)
+[0;32m@LoganOslund [0m➜ [1;34m/workspaces/csci-330-homeworks-LoganOslund/Hwork3 [0;36m([1;31mmain[0;36m) [0m$ exit
+exit
+
+Script done on 2025-02-19 04:50:37+00:00 [COMMAND_EXIT_CODE="0"]

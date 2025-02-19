@@ -1,5 +1,5 @@
-Script started on 2025-02-19 01:12:05+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="160" LINES="9"]
-[0;32m@LoganOslund [0m➜ [1;34m/workspaces/csci-330-homeworks-LoganOslund/Hwork3 [0;36m([1;31mmain[0;36m) [0m$ cat ues[K[K[KQuestion1Code.cpp 
+Script started on 2025-02-19 05:18:28+00:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="160" LINES="9"]
+[0;32m@LoganOslund [0m➜ [1;34m/workspaces/csci-330-homeworks-LoganOslund/Hwork3 [0;36m([1;31mmain[0;36m) [0m$ cat Question1Code.cpp 
 #include <iostream> 
 #include <iomanip>
 using namespace std; 
@@ -77,15 +77,27 @@ void printArray(int arr[], int n)
 int main() 
 { 
     int arr[] = { 4, 9, 5, 7, 1, 10, 20, 36 }; 
-    int n = sizeof(arr) / sizeof(*arr); 
+    int n = sizeof(arr) / sizeof(*arr);
+    cout << "Original:" << endl;
+    printArray(arr, n);
     quickSort(arr, 0, n - 1); 
-    printArray(arr, n); 
+    cout << "Final:" << endl;
+    printArray(arr, n);
     return 0; 
 } 
 [0;32m@LoganOslund [0m➜ [1;34m/workspaces/csci-330-homeworks-LoganOslund/Hwork3 [0;36m([1;31mmain[0;36m) [0m$ g++ Question1Code.cpp 
 [0;32m@LoganOslund [0m➜ [1;34m/workspaces/csci-330-homeworks-LoganOslund/Hwork3 [0;36m([1;31mmain[0;36m) [0m$ ./a.out
+Original:
+4 9 5 7 1 10 20 36 
+Final:
 1 4 5 7 9 10 20 36 
+[0;32m@LoganOslund [0m➜ [1;34m/workspaces/csci-330-homeworks-LoganOslund/Hwork3 [0;36m([1;31mmain[0;36m) [0m$ ./a.outg++ Question1Code.cpp 
+[0;32m@LoganOslund [0m➜ [1;34m/workspaces/csci-330-homeworks-LoganOslund/Hwork3 [0;36m([1;31mmain[0;36m) [0m$ g++ Question1Code.cpp ./a.out[K
+Original:
+24 9 5 0 1 15 20 1 
+Final:
+0 1 1 5 9 15 20 24 
 [0;32m@LoganOslund [0m➜ [1;34m/workspaces/csci-330-homeworks-LoganOslund/Hwork3 [0;36m([1;31mmain[0;36m) [0m$ exit
 exit
 
-Script done on 2025-02-19 01:12:44+00:00 [COMMAND_EXIT_CODE="0"]
+Script done on 2025-02-19 05:19:17+00:00 [COMMAND_EXIT_CODE="0"]

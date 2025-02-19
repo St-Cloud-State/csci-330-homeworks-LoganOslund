@@ -32,6 +32,6 @@
     )
 )
 
-(let ((arr '(6 9 3 5 0 34 71 1 3 2)))  ; Define arr
+(let ((arr '(1 20 1 3 11)))  ; Define arr
 (format t "Original list: ~A~%" arr) ; print og array
 (format t "Sorted list: ~A~%" (MERSORT arr))) ; print sorted array

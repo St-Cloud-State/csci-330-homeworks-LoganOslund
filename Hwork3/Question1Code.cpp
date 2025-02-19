@@ -74,9 +74,12 @@ void printArray(int arr[], int n)
 
 int main() 
 { 
-    int arr[] = { 4, 9, 5, 7, 1, 10, 20, 36 }; 
-    int n = sizeof(arr) / sizeof(*arr); 
+    int arr[] = { 24, 9, 5, 0, 1, 15, 20, 1 }; 
+    int n = sizeof(arr) / sizeof(*arr);
+    cout << "Original:" << endl;
+    printArray(arr, n);
     quickSort(arr, 0, n - 1); 
-    printArray(arr, n); 
+    cout << "Final:" << endl;
+    printArray(arr, n);
     return 0; 
 } 

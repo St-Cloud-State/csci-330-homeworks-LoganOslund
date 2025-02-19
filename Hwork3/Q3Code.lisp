@@ -36,7 +36,7 @@
     (merge-pairs sorted-pairs)) ; Merge the sorted pairs
 )  
 
-(let ((arr '(3 1 4 2 5 0 7 3 9 1)))
+(let ((arr '(9 1 1 35 0 4)))
   (format t "Original list: ~A~%" arr)
   (format t "Sorted list: ~A~%" (bottom-up arr))
 )
